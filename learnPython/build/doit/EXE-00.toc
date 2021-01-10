@@ -2,7 +2,7 @@
  True,
  False,
  False,
- 'v.ico',
+ '1.ico',
  None,
  False,
  False,
@@ -170,7 +170,7 @@
  [],
  False,
  False,
- 1604494473,
+ 1605960448,
  [('run.exe',
    'e:\\soft\\python\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])
